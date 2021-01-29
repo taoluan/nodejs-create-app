@@ -11,7 +11,7 @@ const controllerSocket = require('./socket/socket')
 const path = require('path');
 const io = require('socket.io')(server,{
     cors: {
-        origin: 'https://minigameclient.herokuapp.com',
+        origin: '*',
       }
 });
 var clients =[]
