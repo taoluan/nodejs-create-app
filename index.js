@@ -8,6 +8,7 @@ const routesAPI = require('./routes/api')
 const helmet = require('helmet')
 const server = require('http').Server(app);
 const controllerSocket = require('./socket/socket')
+const path = require('path');
 const io = require('socket.io')(server,{
     cors: {
         origin: '*',
@@ -17,6 +18,8 @@ var clients =[]
 const queueClients = []
 const queueQuestion = []
 const key = {}
+const publicPath = path.join(__dirname, '..', 'public');
+app.use(express.static(publicPath));
 dotenv.config()
 app.use(cors())
 app.use(morgan('dev'))
