@@ -25,13 +25,7 @@ dotenv.config()
 app.use(morgan('dev'))
 app.use(express.json())
 app.use(helmet())
-app.use(
-  cors({
-      credentials: true,
-      origin: true
-  })
-);
-app.options('https://minigameclient.herokuapp.com', cors());
+app.use(cors());
 app.use('/api',routesAPI)
 io.on('connection', (socket) => {
     socket.on('setName',(name)=>controllerSocket.setName(name,socket,io))
