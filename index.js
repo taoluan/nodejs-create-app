@@ -11,7 +11,7 @@ const controllerSocket = require('./socket/socket')
 const path = require('path');
 const io = require('socket.io')(server,{
     cors: {
-        origin: 'https://minigameclient.herokuapp.com/',
+        origin: 'https://minigameclient.herokuapp.com',
       }
 });
 var clients =[]
@@ -31,7 +31,7 @@ app.use(
       origin: true
   })
 );
-app.options('https://minigameclient.herokuapp.com/', cors());
+app.options('https://minigameclient.herokuapp.com', cors());
 app.use('/api',routesAPI)
 io.on('connection', (socket) => {
     socket.on('setName',(name)=>controllerSocket.setName(name,socket,io))
